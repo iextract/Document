@@ -2,7 +2,7 @@
 Selfuse
 
 
-##Document Frame
+## Document Frame
 Most of this document comes from [OpenWrt Wiki](www.openwrt.org).
 It should be organised like this:
 [ROC]
@@ -13,5 +13,5 @@ It should be organised like this:
   POC
   
  
-##Be Careful
+## Be Careful
 Each time when you try to push,remember to commit and push it into the master branch.
