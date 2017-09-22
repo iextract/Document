@@ -4,12 +4,19 @@ Selfuse
 
 ## Document Frame
 Most of this document comes from [OpenWrt Wiki](www.openwrt.org).
+
 It should be organised like this:
+
 [ROC]
+
   BIN
+  
   FS
+  
   INIT
+  
   VULNERABILITY
+  
   POC
   
  
