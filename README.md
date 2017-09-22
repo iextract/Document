@@ -3,7 +3,7 @@ Selfuse
 
 
 ## Document Frame
-Most of this document comes from [OpenWrt Wiki](www.openwrt.org).
+Most of this document comes from [OpenWrt Wiki](http://www.openwrt.org).
 
 It should be organised like this:
 
