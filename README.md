@@ -21,4 +21,4 @@ It should be organised like this:
   
  
 ## Be Careful
-Each time when you try to push,remember to commit and push it into the master branch.
+Each time when you try to push,remember to commit and push it into your own branch.
