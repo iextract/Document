@@ -32,11 +32,11 @@ OpenWrt的包管理提供了一个完全可写的文件系统，从应用程序�
 | OpenWrt File System Hierarchy                                                                                                                                                |
 | ---------- |:-------------------:|:----------------------:|:--------:|:-------------------------:|:---------------:|:---------------------:|:---------:|:-------:|:---------:|
 |            | Flash Storage Partitioning                                                                            | Main Memory Usage                                       |
-| Hardware   | m25p80 spi0.0: m25p64 8192 KiB                                                                        | main memory 32 768 KiB                                  |
-| Layer1     | mtd0 u-boot 128 KiB | mtd5 firmware 8000 KiB                                        | mtd4 art 64 KiB | Kernel space 3828 KiB | User space 28 940 KiB           |
-| Layer2     |                     | mtd1 kernel 1280 KiB   | mtd2 rootfs 6720 KiB                 |                 |                       | up to 50% | 512 KiB | remaining |
+| Hardware   | m25p80 spi0.0: m25p64 8192 KiB                                                                        | main memory 32 768 KiB                                  |
+| Layer1     | mtd0 u-boot 128 KiB | mtd5 firmware 8000 KiB                                        | mtd4 art 64 KiB | Kernel space 3828 KiB | User space 28 940 KiB           |
+| Layer2     |                     | mtd1 kernel 1280 KiB   | mtd2 rootfs 6720 KiB                 |                 |                       | up to 50% | 512 KiB | remaining |
 | mountpoint |                     |                        | /                                    |                 |                       |           |         |           |     
 | filesystem |                     |                        | overlayfs                            |                 |                       |           |         |           |
-| Layer3     |                     |                        | 1536 KiB | mtd3 rootfs_data 5184 KiB |                 |                       |           |         |           |
+| Layer3     |                     |                        | 1536 KiB | mtd3 rootfs_data 5184 KiB |                 |                       |           |         |           |
 | mountpoint | none                | none                   | /rom     | /overlay                  | none            |                       | /tmp      | /dev    |           |
 | filesystem | none                | none                   | SquashFS | JFFS2                     | none            |                       | tmpfs     | tmpfs   |           |
