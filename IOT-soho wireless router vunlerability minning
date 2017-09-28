@@ -1,4 +1,4 @@
-
+ 
 ## 陈宇轩Ver1.0
 
 ### 2.综合描述
@@ -28,4 +28,15 @@ OpenWrt的主要优点在于，Bootloader的存在为用户和开发人员提供
 OpenWrt的包管理提供了一个完全可写的文件系统，从应用程序供应商提供的选择和配置，并允许您自定义的设备，以适应任何应用程序。
 其中包括Rootfs、OverlayFS（合并两个文件系统，其中一个只读，一个可写）、tmpfs（/ tmp驻留在tmpfs分区上，/ var是一个符号链接; / dev驻留在自己的一个tmpfs分区上）、SquashFS(SquashFS是一个只读压缩文件系统)、JFFS2(JFFS2是一个可写的压缩文件系统，具有使用LZMA进行压缩的日志和磨损均衡)、UBIFS(UBIFS是用于原始闪存的文件系统)、ext2。
 
-2.2.3 Memory Usage
+2.2.3 OpenWrt File System Hierarchy / Memory Usage
+| OpenWrt File System Hierarchy                                                                                                                                                |
+| ---------- |:-------------------:|：---------------------:|:--------:|:-------------------------:|:---------------:|:---------------------:|:---------:|:-------:|:---------:|
+|            | Flash Storage Partitioning                                                                            | Main Memory Usage                                       |
+| Hardware   | m25p80 spi0.0: m25p64 8192 KiB                                                                        | main memory 32 768 KiB                                  |
+| Layer1     | mtd0 u-boot 128 KiB | mtd5 firmware 8000 KiB                                        | mtd4 art 64 KiB | Kernel space 3828 KiB | User space 28 940 KiB           |
+| Layer2     |                     | mtd1 kernel 1280 KiB   | mtd2 rootfs 6720 KiB                 |                 |                       | up to 50% | 512 KiB | remaining |
+| mountpoint |                     |                        | /                                    |                 |                       |           |         |           |     
+| filesystem |                     |                        | overlayfs                            |                 |                       |           |         |           |
+| Layer3     |                     |                        | 1536 KiB | mtd3 rootfs_data 5184 KiB |                 |                       |           |         |           |
+| mountpoint | none                | none                   | /rom     | /overlay                  | none            |                       | /tmp      | /dev    |           |
+| filesystem | none                | none                   | SquashFS | JFFS2                     | none            |                       | tmpfs     | tmpfs   |           |
