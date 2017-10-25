@@ -1,3 +1,20 @@
-## 3.3 代码结构
+## 3.3 编译工具
 
-### 3.3.1 固件分析IDA PRO代码
+### 3.3.1 telnetd 和 gdb
+（1）Crosstool-ng制作交叉工具链
+配置ubuntu编译环境；
+安装crosstool-ng；
+配置自己的交叉编译器；（src directory,prifix directory,EABI）
+自动下载和编译;
+安装；标准化。
+
+（2）使用交叉工具链编译一套telnetd(inetutils)
+./configure CC=/usr/local/arm/armv4-unknown-linux-uclibcgnueabi-gcc LDFLAGS=-static ./configure --disable-clients --disable-ipv6 --disable-ncurses --host=arm-linux --prefix=/
+配置：
+vi /etc/inetd.conf # inetd 的配置文件，加入要开启的服务：telnet stream tcp nowait root /mnt/telnetd in.telnetd；
+vi /etc/services # 网络服务文件，加入telnet名称(和inetd.conf中匹配)，端口和协议：telnet   23/tcp；
+加载devpts文件系统到 /etc/init.d/rcS 自启动：mount devpts -t devpts /dev/pts
+
+（3）使用交叉工具编译gdb
+下载gdb和termcap；编译termcap：./configure --host=arm-linux --prefix="$PWD/../gdb"
+编译gdb：./configure --host=arm-linux --prefix="$PWD/../gdb"   --without-x --disable-gdbtk --disable-tui --without-included-regex --without-included-gettext LDFLAGS="-L$PWD/../gdb/lib" CPPFLAGS="-I$PWD/../gdb/include"  LD="-ltermcap"
